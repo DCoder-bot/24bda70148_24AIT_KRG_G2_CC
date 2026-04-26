@@ -17,7 +17,7 @@ int main() {
         adj[v].push_back({u, i});
     }
 
-    vector<int> ans(n - 1);
+    vector<int> ans(n - 1, -1);
     int label = 0;
 
     for (int i = 1; i <= n; i++) {
@@ -30,8 +30,9 @@ int main() {
     }
 
     for (int i = 0; i < n - 1; i++) {
-        if (ans[i] == 0 && label > 0) continue;
-        ans[i] = label++;
+        if (ans[i] == -1) {
+            ans[i] = label++;
+        }
     }
 
     for (int i = 0; i < n - 1; i++) {
